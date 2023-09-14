@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" href="img/mountainlogo.ico" type="image/x-icon">
+        <link rel="Dawson's Portfolio Website" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DevJane Portfolio Website</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
+        
+        <!-- Update these with your own fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="img/mountainlogo.jpg" alt="">
+            </div>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">About me</a></li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+
+  <!-- Introduction Section -->
+<section class="intro">
+    <h1 class="section__title section__title--intro">
+        <strong>Personalized Chatbot</strong> Made with Stack AI & GPT
+    </h1>
+    <p class="section__subtitle section__subtitle--intro">Your Digital Portfolio Assistant</p>
+    <img src="img/chatbotlogo.png" alt="Personalized Chatbot Logo" class="intro__img">
+</section>
+        
+<!-- Details Section -->
+<div class="pi-chatbot">
+    <p>
+        My personalized chatbot isn't just a static FAQ engine; it's a dynamic guide to my professional experience and expertise. By leveraging both Stack AI for query understanding and the GPT API for text generation, the chatbot offers rich, conversational interactions.
+    </p>
+    <img src="img/stackai.jpg" alt="Chatbot in Action">
+    
+    <p>
+        <strong>Two-Tiered Intelligence</strong><br>
+        The user prompt is first analyzed by Stack AI, which queries a vector database containing detailed information from my portfolio, blog posts, and more. The most relevant data is then selected and sent along with the user's original question and a customized system message to the Open AI API.
+    </p>
+    
+    <p>
+        <strong>What Makes It Special?</strong><br>
+        This dual-engine approach ensures that the chatbot understands both the context and nuances of your queries, delivering not just any answer, but the right one. It's like having a conversation with me, backed by all the data points that constitute my professional journey.
+    </p>
+
+    <p>
+        <strong>Customized User Experience</strong><br>
+        The synergy between Stack AI and Open Ai API allows the chatbot to craft responses that are not just informative but also conversational and engaging, thanks to the customized system messages.
+    </p>
+</div>
+
+        
+   <!-- Footer -->
+   <footer class="footer">
+    <a href="mailto:dmgrattidge@gmail.com" class="footer__link">dmgrattidge@gmail.com</a>
+    <ul class="social-list">
+        <li class="social-list__item">
+            <a class="social-list__link" href="https://instagram.com/dawson_grattidge?igshid=NzZlODBkYWE4Ng==">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </li>
+        <li class="social-list__item">
+            <a class="social-list__link" href="https://www.linkedin.com/in/dawson-grattidge-564399204/">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </li>
+        <li class="social-list__item">
+            <a class="social-list__link" href="https://twitter.com/DawsonGrattidge">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+        <li class="social-list__item">
+            <a class="social-list__link" href="https://github.com/dawsongrattidge">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+    </ul>
+</footer>
+
+
+
+<div id="chatbotTooltip" class="hidden" style="z-index: 99999; bottom: 10px; right: 80px;">
+    <span>Need help? Chat with my bot!</span>
+  </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script src="js/index.js"></script>
+        <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+        <script>
+        window.botpressWebChat.init({
+        "composerPlaceholder": "Hello there! 👋",
+        "botConversationDescription": "Ask about me!",
+        "botId": "a6a15332-1508-4a81-846c-ec3db9860688",
+        "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
+        "messagingUrl": "https://messaging.botpress.cloud",
+        "clientId": "a6a15332-1508-4a81-846c-ec3db9860688",
+        "lazySocket": true,
+        "botName": "Dawson's Portfolio Assistant",
+        "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/b25a3dc1-98d3-48d8-a240-15cbf6d2b5bb/v17760/style.css",
+        "frontendVersion": "v0",
+        "showPoweredBy": false
+        });
+        </script>
+    </body>
+</html>
+
