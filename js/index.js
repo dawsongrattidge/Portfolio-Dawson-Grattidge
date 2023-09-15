@@ -1,3 +1,5 @@
+
+
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelectorAll('.nav__link')
 
@@ -27,11 +29,29 @@ window.addEventListener('scroll', () => {
 });
 
 
-const themeToggle = document.querySelector('.theme-toggle');
+const themeSwitcher = document.getElementById('checkbox');
 
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
+themeSwitcher.addEventListener('change', function() {
+    let currentTheme = document.documentElement.getAttribute('data-theme');
+    if (this.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+    }
 });
+
+// Check for saved theme in local storage
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    if (currentTheme === 'dark') {
+        themeSwitcher.checked = true;
+    }
+}
+
+
 
 
 const images = document.querySelectorAll('.lazy-load');
@@ -47,4 +67,3 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 images.forEach(img => observer.observe(img));
-

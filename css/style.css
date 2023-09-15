@@ -21,7 +21,7 @@
      /* Dark Mode Variables */
   --clr-light-dark: #303030;
   --clr-dark-dark: #fff;
-  --clr-accent-dark: #ff5722;
+  --clr-accent-dark: #54d6f3;
     
     --fs-h1: 3rem;
     --fs-h2: 2.25rem;
@@ -31,6 +31,85 @@
     --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
           0.125em 0.125em 0.25em rgba(0,0,0,.15);
 }
+
+/*dark mode*/
+[data-theme="dark"] {
+    --clr-light: var(--clr-light-dark);
+    --clr-dark: var(--clr-dark-dark);
+    --clr-accent: var(--clr-accent-dark);
+}
+.theme-switch-wrapper {
+    position: absolute;
+    top: 60px; /* Adjust according to your preference */
+    left: 40px; /* Adjust according to your logo's width and desired spacing */
+    z-index: 2;
+  }
+  
+
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* This creates spacing between the logo and the switch */
+    z-index: 2;
+  }
+  
+  
+  .theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    z-index: 2;
+  }
+  
+  .theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    z-index: 2;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    z-index: 2;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    z-index: 2;
+  }
+  
+  input:checked + .slider {
+    background-color: #54d6f3; /* You can adjust this color to match your site's design */
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
 
 @media (min-width: 800px) {
     :root {
@@ -44,9 +123,9 @@
 /* General styles */
 
 /* endable this to add smooth scrolling */
-/* html {
+ html {
     scroll-behavior: smooth;
-} */
+} 
 
 
 body {
@@ -114,10 +193,12 @@ h3 { font-size: var(--fs-h3) }
 
 .section__title--intro {
     font-weight: var(--fw-reg);
+    z-index: 1;
 }
 
 .section__title--intro strong {
     display: block;
+    z-index: 1;
 }
 
 .section__subtitle {
@@ -131,6 +212,7 @@ h3 { font-size: var(--fs-h3) }
     padding: .25em 1em;
     font-family: var(--ff-secondary);
     margin-bottom: 1em;
+    z-index: 1;
 }
 
 .section__subtitle--work {
@@ -255,14 +337,17 @@ header {
 
 .intro {
     position: relative;
+    z-index: 1;
 }
 
 .intro__img {
     box-shadow: var(--clr-light);
+    z-index: 1;
 }
 
 .section__subtitle--intro {
     display: inline-block;
+    z-index: 1;
 }
 
 @media (min-width: 600px) {
@@ -275,6 +360,7 @@ header {
             "img title"
             "img subtitle";
         grid-template-columns: min-content max-content;
+        z-index: 1;
     }
     
     .intro__img {
@@ -282,6 +368,7 @@ header {
         min-width: 250px;
         position: relative;
         z-index: 2;
+        z-index: 1;
     }    
     
     .section__subtitle--intro {
@@ -292,8 +379,24 @@ header {
         position: relative;
         left: -1.5em;
         width: calc(100% + 1.5em);
+        z-index: 1;
     }
 }
+
+.particle-container {
+    position: relative;
+    overflow: hidden; /* To ensure particles do not spill outside the container */
+}
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;  /* Ensure the particles stay behind your content */
+}
+
 
 
 
@@ -304,7 +407,7 @@ header {
     background-image: url(../img/services-bg.jpg);
     background-size: cover;
     /* background-blend-mode: multiply; */
-    color: var(--clr-light);
+    color: #fff;
     text-align: center;
 }
 
@@ -349,6 +452,8 @@ header {
 .about-me {
     max-width: 1000px;
     margin: 0 auto;
+    position: relative; /* To ensure it's layered above the particles */
+    z-index: 1;  /* Keep this higher than the particle.js z-index to be on top */
 }
 
 .about-me__img {
@@ -598,6 +703,11 @@ header {
         vertical-align: top; /* This ensures the tops of the images align if they have different heights */
         margin-right: 10px; /* Optional: spacing between images */
     }
+
+
+
+
+
 
 
 
