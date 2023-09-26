@@ -1,0 +1,35 @@
+Portfolio Site Data base schema
+
+
+Devices Table
+
+ID
+DeviceUID > INT PK
+DeviceType > INT
+LastSeenDateTime  > DateTime 
+
+
+
+Device data table
+
+ID > INT PK
+DeviceUID > INT
+DateTime> DateTime
+SystemVoltage > float 
+LteLongitude >float
+LteLatitude >float
+WifiLongitude >float
+WifiLatitude >float
+Temperature >float
+UltraTemperature >float
+Humidity >float
+AmbientLight >float
+AcessPoint0 > long
+AcessPoint1 >long
+AcessPoint2 > long
+AcessPoint3 > long
+AcessPoint4 > long
+AcessPoint5 > long
+AccelerometerState >String
+CreatedAt >datetime
+UpdatedAt >datetime
