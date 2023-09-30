@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" href="../img/mountainlogo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dawson's Portfolio Website</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
+        
+        <!-- Update these with your own fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+
+<!-- Import Web libraries-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="../modules/d3.v7.min.js"></script>
+
+
+        
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/iotdashboard.css">
+
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="../img/mountainlogo.jpg" alt="">
+            </div>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="../index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="../index.html#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="../index.html#about" class="nav__link">About me</a></li>
+                    <li class="nav__item"><a href="../index.html#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+
+        <section class="intro">
+            <h1 class="section__title section__title--intro">
+                <strong> mcThings </strong> Field Application Technologist
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">May 2021 - Present</p>
+            <img src="../img/mcThings-logo.png" alt="" class="intro__img">
+        </section>
+        
+<!-- Portfolio Section -->
+<div class="portfolio-item-individual">
+
+    <!-- Hardware Engineering Section -->
+    <section class="portfolio-item-individual full-page-section">
+        <h3 class="portfolio__title">Hardware Engineering</h3>
+        <ul class="pi-mcthings__list">
+            <li>Operated and troubleshooted an ASM pick and place line</li>
+            <li>PCB design using Altium</li>
+            <li>Small form-factor Ultra-Low-Power LTE PCB design</li>
+            <li>Manufacturing of IoT devices</li>
+            <li>Hardware debugging and validation</li>
+            <li>RF Certfication Communcation</li>
+        </ul>
+    </section>
+
+
+</div>
+
+   <!-- Device Selection -->
+   <div id="device-selection">
+    <label for="device-list">Select Device:</label>
+    <select id="device-list" onchange="fetchDeviceData()">
+        <!-- Filled dynamically -->
+    </select>
+</div>
+
+<div class="dashboard">
+    <div class="widget" id="temperature-widget">
+      <h3>Temperature</h3>
+      <p id="temperature-value">--</p>
+      <div class="gauge-container">
+        <div id="temperature-gauge"></div>
+      </div>
+    </div>
+    <div class="widget" id="humidity-widget">
+      <h3>Humidity</h3>
+      <p id="humidity-value">--</p>
+      <div class="gauge-container">
+        <div id="humidity-gauge"></div>
+      </div>
+    </div>
+    <div class="widget" id="ambient-light-widget">
+      <h3>Ambient Light</h3>
+      <p id="ambient-light-value">--</p>
+      <div class="gauge-container">
+        <div id="ambient-light-gauge"></div>
+      </div>
+    </div>
+    <div class="widget" id="battery-voltage-widget">
+      <h3>Battery Voltage</h3>
+      <p id="battery-voltage-value">--</p>
+      <div class="gauge-container">
+        <div id="battery-voltage-gauge"></div>
+      </div>
+    </div>
+    <div class="widget map-widget" id="location-widget">
+      <h3>Location</h3>
+      <div id="map"></div>
+    </div>
+    <div class="widget chart-widget" id="chart-widget">
+      <h3>Chart</h3>
+      <div id="d3-chart"></div>
+    </div>
+  </div>
+
+        
+   <!-- Footer -->
+   <footer class="footer">
+    <a href="mailto:dmgrattidge@gmail.com" class="footer__link">dmgrattidge@gmail.com</a>
+    <ul class="social-list">
+        <li class="social-list__item">
+            <a class="social-list__link" href="https://instagram.com/dawson_grattidge?igshid=NzZlODBkYWE4Ng==">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </li>
+        <li class="social-list__item">
+            <a class="social-list__link" href="https://www.linkedin.com/in/dawson-grattidge-564399204/">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </li>
+        <li class="social-list__item">
+            <a class="social-list__link" href="https://twitter.com/DawsonGrattidge">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+        <li class="social-list__item">
+            <a class="social-list__link" href="https://github.com/dawsongrattidge">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+    </ul>
+</footer>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script src="../js/index.js"></script>
+        <script src="../js/dashboard.js" ></script>
+        <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+        <script>
+        window.botpressWebChat.init({
+        "composerPlaceholder": "Hello there! 👋",
+        "botConversationDescription": "Ask about me!",
+        "botId": "a6a15332-1508-4a81-846c-ec3db9860688",
+        "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
+        "messagingUrl": "https://messaging.botpress.cloud",
+        "clientId": "a6a15332-1508-4a81-846c-ec3db9860688",
+        "lazySocket": true,
+        "botName": "Dawson's Portfolio Assistant",
+        "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/b25a3dc1-98d3-48d8-a240-15cbf6d2b5bb/v17760/style.css",
+        "frontendVersion": "v0",
+        "showPoweredBy": false
+        });
+        </script>
+    </body>
+</html>
