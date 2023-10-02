@@ -17,6 +17,10 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="../modules/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.0.1/chartjs-plugin-zoom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 
 
         
@@ -45,25 +49,48 @@
 
         <section class="intro">
             <h1 class="section__title section__title--intro">
-                <strong> mcThings </strong> Field Application Technologist
+                <strong> Dynamic </strong> IoT Dashboard
             </h1>
-            <p class="section__subtitle section__subtitle--intro">May 2021 - Present</p>
-            <img src="../img/mcThings-logo.png" alt="" class="intro__img">
+            <p class="section__subtitle section__subtitle--intro">To DO</p>
+            <img src="../img/portfolio-04.jpg" alt="" class="intro__img">
         </section>
         
 <!-- Portfolio Section -->
 <div class="portfolio-item-individual">
 
-    <!-- Hardware Engineering Section -->
     <section class="portfolio-item-individual full-page-section">
-        <h3 class="portfolio__title">Hardware Engineering</h3>
-        <ul class="pi-mcthings__list">
-            <li>Operated and troubleshooted an ASM pick and place line</li>
-            <li>PCB design using Altium</li>
-            <li>Small form-factor Ultra-Low-Power LTE PCB design</li>
-            <li>Manufacturing of IoT devices</li>
-            <li>Hardware debugging and validation</li>
-            <li>RF Certfication Communcation</li>
+        <h3 class="portfolio__title">Project Description</h3>
+        <ul class="">
+            <li>
+                <strong>Overview:</strong> This dynamic IoT Dashboard is designed to provide real-time monitoring and analytics for various sensor data collected from IoT devices. 
+            </li>
+            <li>
+                <strong>Technology Stack:</strong> The dashboard is built using a combination of advanced web technologies, including D3.js for data visualization, Leaflet for mapping, and a SQL server for backend data storage.
+            </li>
+            <li>
+                <strong>D3.js:</strong> Utilized for creating responsive and dynamic gauges and charts that display sensor data like temperature, humidity, ambient light, and battery voltage.
+            </li>
+            <li>
+                <strong>Leaflet:</strong> Integrated to display the real-time geographical location of each IoT device on an interactive map.
+            </li>
+            <li>
+                <strong>SQL Server:</strong> Used for robust and scalable storage of sensor data. The server is accessed using PHP to fetch and update records.
+            </li>
+            <li>
+                <strong>Google API:</strong> Leverages Google's Geolocation API to determine the location of devices based on nearby WiFi access points.
+            </li>
+            <li>
+                <strong>Device Selection:</strong> A dropdown menu enables the user to select which device's data they would like to view.
+            </li>
+            <li>
+                <strong>Responsiveness:</strong> The dashboard layout is fully responsive, making it accessible on various devices and screen sizes.
+            </li>
+            <li>
+                <strong>Security:</strong> Implemented best practices to secure the data communication between the IoT devices and the dashboard.
+            </li>
+            <li>
+                <strong>Future Enhancements:</strong> Plans include the integration of machine learning algorithms for predictive analytics and automated alerts for anomaly detection.
+            </li>
         </ul>
     </section>
 
@@ -73,7 +100,7 @@
    <!-- Device Selection -->
    <div id="device-selection">
     <label for="device-list">Select Device:</label>
-    <select id="device-list" onchange="fetchDeviceData()">
+    <select id="device-list" onchange="fetchDevices()">
         <!-- Filled dynamically -->
     </select>
 </div>
@@ -113,7 +140,7 @@
     </div>
     <div class="widget chart-widget" id="chart-widget">
       <h3>Chart</h3>
-      <div id="d3-chart"></div>
+      <canvas id="chart"></canvas>
     </div>
   </div>
 

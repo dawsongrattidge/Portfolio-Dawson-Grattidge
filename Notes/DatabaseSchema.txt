@@ -1,19 +1,38 @@
 Portfolio Site Data base schema
 
+mysql -u Dawson -p
+
+y*ZQ3NFrzGUPnq@YC
+
+USE IOT_Dashboard;
 
 Devices Table
 
-ID
-DeviceUID > INT PK
-DeviceType > INT
+ID > int pk
+DeviceUID > INT 
+DeviceType > enum
 LastSeenDateTime  > DateTime 
+
+DeviceTypeEnum
+mcSens3280
+mcMod3484
+mcSens3530
+mcPallet
+
+
+CREATE TABLE Devices (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    DeviceUID INT NOT NULL,
+    DeviceType ENUM('mcSens3280', 'mcMod3484', 'mcSens3530','mcPallet'),  
+    LastSeenDateTime DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 
 
 
 Device data table
 
 ID > INT PK
-DeviceUID > INT
+DeviceUID > INT  
 DateTime> DateTime
 SystemVoltage > float 
 LteLongitude >float
@@ -30,6 +49,38 @@ AcessPoint2 > long
 AcessPoint3 > long
 AcessPoint4 > long
 AcessPoint5 > long
-AccelerometerState >String
+AccelerometerState >enum
 CreatedAt >datetime
 UpdatedAt >datetime
+
+
+
+
+
+CREATE TABLE DeviceData (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    DeviceUID INT NOT NULL,
+    DateTime DATETIME Not NULL,
+    SystemVoltage FLOAT,
+    LteLongitude FLOAT,
+    LteLatitude FLOAT,
+    WifiLongitude FLOAT,
+    WifiLatitude FLOAT,
+    Temperature FLOAT,
+    UltraTemperature FLOAT,
+    Humidity FLOAT,
+    AmbientLight FLOAT,
+    AcessPoint0 BIGINT,
+    AcessPoint1 BIGINT,
+    AcessPoint2 BIGINT,
+    AcessPoint3 BIGINT,
+    AcessPoint4 BIGINT,
+    AcessPoint5 BIGINT,
+    AccelerometerState ENUM('State1', 'State2', 'State3'),  -- Replace with your actual states
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+Test
+curl -X POST http://dawsongrattidge.ca/api/webhook.php -H "Content-Type: application/json" -d '{"DeviceUID": 123,"DateTime": "2023-09-25T12:34:56","SystemVoltage": 3.3,"LteLongitude": 40.7128,"LteLatitude": 74.0060,"WifiLongitude": 40.7128,"WifiLatitude": 74.0060,"Temperature": 25.5,"UltraTemperature": 25.5,"Humidity": 60,"AmbientLight": 200,"AcessPoint0": 1010101010,"AcessPoint1": 1010101011,"AcessPoint2": 1010101012,"AcessPoint3": 1010101013,"AcessPoint4": 1010101014,"AcessPoint5": 1010101015,"AccelerometerState": "State1" }'

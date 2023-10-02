@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IOT Device Data Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.0.1/chartjs-plugin-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+  <div style="width: 80%; margin: auto;">
+    <canvas id="iotDataChart"></canvas>
+  </div>
+
+  <script>
+    class ChartClass {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId).getContext('2d');
+        this.config = {
+          type: 'line',
+          data: { labels: [], datasets: [] },
+          options: {
+            scales: {
+              x: {
+                type: 'time',
+                adapters: {
+                  date: {
+                    library: 'date-fns'
+                  }
+                },
+                time: {
+                  unit: 'minute',
+                  displayFormats: {
+                    minute: 'HH:mm'
+                  }
+                }
+              },
+              y: {
+                beginAtZero: true
+              }
+            },
+            plugins: {
+              zoom: {
+                pan: { enabled: true, mode: 'x' },
+                zoom: {
+                  wheel: { enabled: true },
+                  pinch: { enabled: true },
+                  mode: 'x'
+                }
+              }
+            }
+          }
+        };
+        this.chart = new Chart(this.canvas, this.config);
+      }
+
+      addSeries(label, timeStamps, data, borderColor) {
+        const newDataset = {
+          label: label,
+          data: data.map((value, index) => ({ x: timeStamps[index], y: value })),
+          borderColor: borderColor,
+          borderWidth: 1,
+          fill: false
+        };
+        this.config.data.datasets.push(newDataset);
+        this.chart.update();
+      }
+
+      addPoint(timeStamp, value, seriesIndex) {
+        this.config.data.datasets[seriesIndex].data.push({ x: timeStamp, y: value });
+        this.chart.update();
+      }
+
+      removeSeries(seriesIndex) {
+        if (this.config.data.datasets.length > seriesIndex) {
+          this.config.data.datasets.splice(seriesIndex, 1);
+          this.chart.update();
+        }
+      }
+    }
+
+    // Initialize chart
+    const myChart = new ChartClass('iotDataChart');
+
+    // Add series
+    const timeStamps = [
+      '2023-09-25T23:42:55',
+      '2023-09-25T23:52:55',
+      '2023-09-26T00:02:55',
+      '2023-09-26T00:12:55',
+      '2023-09-26T00:22:55',
+      '2023-09-26T00:32:55'
+    ];
+    myChart.addSeries('Temperature (°C)', timeStamps, [22, 21, 20, 19, 20, 22], 'rgba(255, 99, 132, 1)');
+    myChart.addSeries('Humidity (%)', timeStamps, [45, 44, 43, 42, 45, 47], 'rgba(54, 162, 235, 1)');
+  </script>
+</body>
+</html>
